@@ -1,0 +1,78 @@
+<style type="text/css">
+  	 * { box-sizing: border-box; }
+.video-background {
+  background: #000;
+  position: relative;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -99;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: url(<?php echo home_url('/wp-content/uploads/revslider/video-media/DISCOVER-JORDAN-Cinematic-4K-Travel-Film-F09F87AFF09F87B4_5.jpeg'); ?>) no-repeat center;
+  background-size: cover;
+}
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  
+}
+.video-foreground{
+	opacity: 0;
+}
+.video-foreground.play{
+	opacity: 1;
+}
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground { width: 330%; left: -115%; }
+}
+
+  </style>
+  
+  <div class="video-background">
+    <div class="video-foreground" id="video-foreground">
+    	<iframe allow="autoplay; fullscreen" type="text/html" src="https://www.youtube-nocookie.com/embed/-Ri2DOnbaoo?version=3&amp;enablejsapi=1&amp;html5=1&amp;hd=1&amp;wmode=opaque&amp;showinfo=0&amp;mute=1&amp;loop=1&amp;rel=0&amp;origin=https://projects.microrage.com;&amp;controls=0&amp;playsinline=1&amp;playlist=-Ri2DOnbaoo" allowfullscreen="" width="100%" height="100%" class="intrinsic-ignore" style="opacity: 1; visibility: visible; width: 100%; height: 220.428%; max-height: none; max-width: none; position: absolute; left: 0px; top: -60.2141%; display: block;" id="iframe20283" title="DISCOVER JORDAN - Cinematic 4K Travel Film 🇯🇴"></iframe>
+    </div>
+    <div class="content-overlay">
+    	<div class="container">
+    		<h1>Welcome to Jordan </h1>
+    		<p>YOU'VE COME TO THE RIGHT PLACE.</p>
+    	</div>
+    </div>
+  </div>
+  
+  
+<script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+<script type="text/javascript">
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('iframe20283', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+    });
+  }
+	 function onPlayerReady(event) {
+	 	console.log(event)
+	  event.target.playVideo();
+	  setTimeout(function(){
+	  	console.log('her');
+	  	document.getElementById("video-foreground").classList.add("play");
+	  }, 1000);
+	}
+  function onPlayerStateChange(event) {
+   // changeBorderColor(event.data);
+  }
+
+
+</script>
+
+
